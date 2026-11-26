@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native builds
+android/
+ios/
+
+# Misc
+*.log
+.DS_Store
+.env*.local
+
+# Muse GitHub snapshot sync metadata (never commit)
+*.muse-github-snapshot-sync.json
+*.muse-github-snapshot-sync.json.tmp-*

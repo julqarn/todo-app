@@ -1,0 +1,51 @@
+{
+    "expo": {
+        "android": {
+            "adaptiveIcon": {
+                "backgroundColor": "#111827"
+            },
+            "package": "com.julqarn.todoapp",
+            "permissions": [
+                "android.permission.POST_NOTIFICATIONS",
+                "android.permission.SCHEDULE_EXACT_ALARM",
+                "android.permission.VIBRATE",
+                "android.permission.WAKE_LOCK",
+                "android.permission.RECEIVE_BOOT_COMPLETED"
+            ]
+        },
+        "experiments": {
+            "typedRoutes": true
+        },
+        "ios": {
+            "bundleIdentifier": "com.julqarn.todoapp",
+            "infoPlist": {
+                "UIBackgroundModes": [
+                    "fetch",
+                    "remote-notification"
+                ]
+            },
+            "supportsTablet": true
+        },
+        "name": "Todo Focus",
+        "newArchEnabled": true,
+        "orientation": "portrait",
+        "plugins": [
+            "expo-router",
+            [
+                "expo-notifications",
+                {
+                    "mode": "production",
+                    "sounds": []
+                }
+            ]
+        ],
+        "scheme": "todofocus",
+        "slug": "todo-app",
+        "userInterfaceStyle": "automatic",
+        "version": "1.0.0",
+        "web": {
+            "bundler": "metro",
+            "output": "static"
+        }
+    }
+}
