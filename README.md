@@ -2,16 +2,14 @@
 
 A cross-platform Todo app for **Android and iOS** with a modern alarm system and Pomodoro focus mode.
 
-Built with React Native + Expo (TypeScript), so one codebase runs on both platforms.
+One React Native + Expo (TypeScript) codebase runs on both platforms. Data is stored on-device, so the app works fully offline.
 
 ## Features
 
-- **Todos** — create, edit, complete, delete, search, filter, priorities, categories, due dates and reminders
-- **Modern alarms** — local notifications with Android alarm channel, repeat days, snooze, test alarm, and todo reminders
-- **Pomodoro focus mode** — focus / short break / long break cycles, progress ring, linked todo, background-safe timer, completion alarm, session history
-- **Stats** — focus minutes, completed todos, and recent sessions
-- **Offline-first** — all data is stored on-device with AsyncStorage
-- **Light / dark / system theme**
+- **Todos** — create, edit, complete, delete, search, and filter tasks with priorities, categories, due dates, and reminder alarms
+- **Modern alarms** — repeat days (once / daily / weekdays / custom), snooze and dismiss actions, test alarm, Android alarm channel with vibration, and todo reminders
+- **Pomodoro focus mode** — focus / short break / long break cycles, progress ring, linked todos, background-safe timer, phase-end alarm, and session history
+- **Stats & settings** — focus minutes today and in total, recent sessions, Pomodoro durations, auto-start options, and system/light/dark theme
 
 ## Quick start
 
@@ -20,18 +18,19 @@ npm install
 npm start
 ```
 
-Then scan the QR code with Expo Go, or press `a` for Android / `i` for iOS in the Expo CLI.
+Press `a` for Android or `i` for iOS, or scan the QR code with Expo Go.
 
-> Alarms and exact notifications work best in a development build. Expo Go supports local notifications, but Android exact-alarm and full-screen alarm behaviour require a development / production build. See [docs/ALARMS.md](docs/ALARMS.md).
+> Alarms work best in a development build. Expo Go supports local notifications, but Android exact-alarm behaviour is most reliable in a development/production build. See [docs/ALARMS.md](docs/ALARMS.md) and [docs/SETUP.md](docs/SETUP.md).
 
-## Documentation
+## Project structure
 
-- [Setup](docs/SETUP.md) — install, run, and build for Android / iOS
-- [Features](docs/FEATURES.md) — what each screen does
-- [Architecture](docs/ARCHITECTURE.md) — code structure and data flow
-- [Alarms](docs/ALARMS.md) — how the alarm system works and its platform limits
-- [Pomodoro](docs/POMODORO.md) — focus-mode rules and settings
-- [Contributing](CONTRIBUTING.md)
+```text
+app/(tabs)/        Todos, Focus, Alarms, and Stats screens (Expo Router)
+src/components/    Todo/alarm forms, cards, chips, progress ring
+src/lib/           Types, date helpers, Pomodoro logic, notification scheduling
+src/store/         Zustand store with AsyncStorage persistence
+docs/              Setup, features, architecture, alarms, Pomodoro
+```
 
 ## Scripts
 
@@ -40,8 +39,32 @@ Then scan the QR code with Expo Go, or press `a` for Android / `i` for iOS in th
 | `npm start` | Start the Expo dev server |
 | `npm run android` | Start and open on Android |
 | `npm run ios` | Start and open on iOS |
-| `npm run typecheck` | Run TypeScript checks |
-| `npm run doctor` | Run Expo Doctor |
+| `npm run typecheck` | TypeScript check |
+| `npm test` | Pomodoro logic unit tests |
+| `npm run doctor` | Expo Doctor checks |
+
+## Builds
+
+EAS profiles (`development`, `preview`, `production`) are defined in [`eas.json`](eas.json):
+
+```bash
+eas build --profile production --platform android
+eas build --profile production --platform ios
+```
+
+## Documentation
+
+- [Setup](docs/SETUP.md) — install, run, verify, and build
+- [Features](docs/FEATURES.md) — what each screen does
+- [Architecture](docs/ARCHITECTURE.md) — code structure and data flow
+- [Alarms](docs/ALARMS.md) — scheduling, permissions, and platform limits
+- [Pomodoro](docs/POMODORO.md) — phase rules and timer behaviour
+- [Contributing](CONTRIBUTING.md) — workflow and verification steps
+- [Changelog](CHANGELOG.md)
+
+## Verification
+
+The initial release was verified with `npm run typecheck`, `npm test`, and successful `expo export` bundles for both Android and iOS. Run the same checks before every push (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## License
 
