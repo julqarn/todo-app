@@ -43,14 +43,24 @@ jobs:
       - name: Generate Android project
         run: npx expo prebuild --platform android
 
+      - name: Decode release keystore
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: echo "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$GITHUB_WORKSPACE/release.keystore"
+
       - name: Build release APK
         working-directory: android
+        env:
+          ANDROID_KEYSTORE_PATH: ${{ github.workspace }}/release.keystore
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: ./gradlew assembleRelease --no-daemon
 
       - name: Prepare APK file
         id: apk
         run: |
-          if [ "${{ github.ref_type }}" = "tag" ]; then VERSION="${{ github.ref_name }}"; else VERSION="v1.0.0"; fi
+          if [ "${{ github.ref_type }}" = "tag" ]; then VERSION="${{ github.ref_name }}"; else VERSION="v$(node -p "require('./package.json').version")"; fi
           APK_NAME="todo-focus-${VERSION}.apk"
           cp android/app/build/outputs/apk/release/app-release.apk "$APK_NAME"
           ls -lh "$APK_NAME"
