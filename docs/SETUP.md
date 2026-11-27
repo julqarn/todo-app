@@ -2,9 +2,21 @@
 
 Todo Focus is one Expo / React Native codebase that runs on **Android and iOS**.
 
+## Download the Android APK
+
+Most users do not need to build anything:
+
+1. Open the [latest GitHub Release](https://github.com/julqarn/todo-app/releases/latest).
+2. Download the `todo-focus-*.apk` asset.
+3. Install it on an Android phone. Android may ask you to allow installation from your browser or file manager.
+
+The APK is produced by the **Build Android APK** GitHub Actions workflow in this repository: it installs dependencies, runs the typecheck and unit tests, generates the Android project with `npx expo prebuild --platform android`, builds a release APK with Gradle (`./gradlew assembleRelease`), and publishes the APK to GitHub Releases. Maintainers can start it manually from the Actions tab (**Build Android APK → Run workflow**) or by pushing a version tag such as `v1.0.1`.
+
+This APK is for direct installation from GitHub. For Google Play submission, build a signed Android App Bundle with EAS production credentials instead (see Production builds below).
+
 ## Prerequisites
 
-- Node.js 20 or newer (developed with Node 24)
+- Node.js 22 or newer (developed and verified with Node 24; the unit tests run TypeScript directly and need Node's type-stripping support)
 - npm
 - For a physical device: the Expo Go app, or a development build (recommended for alarms)
 - For store builds: an Expo account for EAS Build, plus Apple / Google developer accounts for submission

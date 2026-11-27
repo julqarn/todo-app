@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0 APK — 2026-11-27
+
+- Android APK published for direct download from GitHub Releases (`todo-focus-v1.0.0.apk`), built automatically by the **Build Android APK** GitHub Actions workflow.
+
 ## 1.0.0 — 2026-11-26
 
 - Initial release of Todo Focus for Android and iOS (Expo SDK 52, React Native, TypeScript).

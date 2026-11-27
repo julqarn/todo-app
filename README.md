@@ -4,6 +4,12 @@ A cross-platform Todo app for **Android and iOS** with a modern alarm system and
 
 One React Native + Expo (TypeScript) codebase runs on both platforms. Data is stored on-device, so the app works fully offline.
 
+## Download (Android APK)
+
+**[Download the latest APK from GitHub Releases](https://github.com/julqarn/todo-app/releases/latest)** — open the latest release and download `todo-focus-v1.0.0.apk` (or the newest `todo-focus-*.apk` asset), then install it on your Android phone. Android may ask you to allow installation from your browser or file manager.
+
+The APK is built automatically by GitHub Actions (the **Build Android APK** workflow) from this repository's source and published to GitHub Releases. iOS has no APK; build it with EAS or run it from source (see [docs/SETUP.md](docs/SETUP.md)).
+
 ## Features
 
 - **Todos** — create, edit, complete, delete, search, and filter tasks with priorities, categories, due dates, and reminder alarms
@@ -45,7 +51,9 @@ docs/              Setup, features, architecture, alarms, Pomodoro
 
 ## Builds
 
-EAS profiles (`development`, `preview`, `production`) are defined in [`eas.json`](eas.json):
+Android APKs are built by GitHub Actions: run the **Build Android APK** workflow manually from the Actions tab, or push a version tag such as `v1.0.1`. The workflow verifies the app, generates the Android project with Expo prebuild, builds a release APK with Gradle, and publishes it to GitHub Releases for download.
+
+EAS profiles (`development`, `preview`, `production`) are also defined in [`eas.json`](eas.json):
 
 ```bash
 eas build --profile production --platform android
