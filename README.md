@@ -6,7 +6,7 @@ One React Native + Expo (TypeScript) codebase runs on both platforms. Data is st
 
 ## Download (Android APK)
 
-**[Download the latest APK from GitHub Releases](https://github.com/julqarn/todo-app/releases/latest)** — open the latest release and download `todo-focus-v1.0.0.apk` (or the newest `todo-focus-*.apk` asset), then install it on your Android phone. Android may ask you to allow installation from your browser or file manager.
+**[Download the latest APK from GitHub Releases](https://github.com/julqarn/todo-app/releases/latest)** — open the latest release and download `todo-focus-v1.1.0.apk` (or the newest `todo-focus-*.apk` asset), then install it on your Android phone. Android may ask you to allow installation from your browser or file manager.
 
 The APK is built automatically by GitHub Actions (the **Build Android APK** workflow) from this repository's source and published to GitHub Releases. iOS has no APK; build it with EAS or run it from source (see [docs/SETUP.md](docs/SETUP.md)).
 

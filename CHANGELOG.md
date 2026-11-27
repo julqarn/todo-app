@@ -1,4 +1,10 @@
 # Changelog
+## 1.1.0 — 2026-11-27
+
+- Fixed "App not installed as package appears to be invalid" on newer Android phones: upgraded to Expo SDK 54 / React Native 0.81 so native libraries use 16 KB page alignment.
+- Release builds are now signed with a dedicated release keystore (v1+v2+v3 signing).
+- New app icon designed with Canva (checkmark + focus-timer ring), plus splash and favicon.
+
 
 ## 1.0.0 APK — 2026-11-27
 

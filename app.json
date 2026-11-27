@@ -2,7 +2,8 @@
     "expo": {
         "android": {
             "adaptiveIcon": {
-                "backgroundColor": "#111827"
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#1d4ed8"
             },
             "package": "com.julqarn.todoapp",
             "permissions": [
@@ -11,7 +12,8 @@
                 "android.permission.VIBRATE",
                 "android.permission.WAKE_LOCK",
                 "android.permission.RECEIVE_BOOT_COMPLETED"
-            ]
+            ],
+            "versionCode": 2
         },
         "experiments": {
             "typedRoutes": true
@@ -38,22 +40,22 @@
                     "sounds": []
                 }
             ],
-            [
-                "expo-build-properties",
-                {
-                    "android": {
-                        "kotlinVersion": "1.9.25"
-                    }
-                }
-            ]
+            "./plugins/withReleaseSigning.js"
         ],
         "scheme": "todofocus",
         "slug": "todo-app",
         "userInterfaceStyle": "automatic",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "web": {
             "bundler": "metro",
-            "output": "static"
+            "output": "static",
+            "favicon": "./assets/favicon.png"
+        },
+        "icon": "./assets/icon.png",
+        "splash": {
+            "image": "./assets/splash-icon.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
         }
     }
 }
